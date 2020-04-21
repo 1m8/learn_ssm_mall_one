@@ -12,4 +12,9 @@
       select * from product
     </select>
 
+    <insert id="save" parameterType="com.ldl.domain.Product">
+        insert into
+          product(product_num, product_name, city_name, departure_time, product_price, product_desc, product_status)
+        values(#{productNum}, #{productName}, #{cityName}, #{departureTime}, #{productPrice}, #{productDesc}, #{productStatus})
+    </insert>
 </mapper>

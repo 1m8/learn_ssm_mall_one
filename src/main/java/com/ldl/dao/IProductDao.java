@@ -9,4 +9,6 @@ import java.util.List;
 public interface IProductDao {
 
     List<Product> findAll();
+
+    void save(Product product);
 }

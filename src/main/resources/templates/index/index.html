@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{public/header :: header}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!--Wrapper begin-->
+<div class="wrapper">
+    <nav th:replace="~{public/nav :: nav}" ></nav>
+    <aside th:replace="~{public/aside :: aside}"></aside>
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            Main
+        </section>
+        <!--products list end-->
+    </div>
+</div>
+<!--Wrapper end-->
+<div th:replace="~{public/footer :: footer}" ></div>
+</body>
+</html>

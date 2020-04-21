@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{public/header :: header}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!--Wrapper begin-->
+<div class="wrapper">
+    <nav th:replace="~{public/nav :: nav}" ></nav>
+    <aside th:replace="~{public/aside :: aside}"></aside>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">产品管理</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">首页</a></li>
+                            <li class="breadcrumb-item active">添加产品</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="col-md-12">
+                <!-- general form elements disabled -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">添加产品</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form role="form" action="" method="post">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>产品编码</label>
+                                        <input type="text" name="productNum" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>产品名称</label>
+                                        <input type="text" name="productName" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>产品价格</label>
+                                        <input type="number" name="productPrice" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>出发地</label>
+                                        <input type="text" name="cityName" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>出发时间</label>
+                                        <input type="text" name="departureTime" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>产品描述</label>
+                                        <input type="text" name="productDesc" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info">添加</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<!--Wrapper end-->
+<div th:replace="~{public/footer :: footer}" ></div>
+</body>
+</html>

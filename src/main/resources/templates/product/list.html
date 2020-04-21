@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{public/header :: header}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!--Wrapper begin-->
+<div class="wrapper">
+    <nav th:replace="~{public/nav :: nav}" ></nav>
+    <aside th:replace="~{public/aside :: aside}"></aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">产品管理</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">首页</a></li>
+                            <li class="breadcrumb-item active">产品列表</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!--products list begin-->
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">产品列表</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="btn-group" style="margin-bottom:10px;">
+                                <a href="/product/add.do"><button type="button" class="btn btn-default">新增</button></a>
+                                <button type="button" class="btn btn-default">删除</button>
+                                <button type="button" class="btn btn-default">开启</button>
+                                <button type="button" class="btn btn-default">关闭</button>
+                            </div>
+
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>产品ID</th>
+                                        <th>产品编码</th>
+                                        <th>产品名称</th>
+                                        <th>产品价格</th>
+                                        <th>出发地</th>
+                                        <th>出发时间</th>
+                                        <th>产品描述</th>
+                                        <th>产品状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item : ${products}">
+                                        <td th:text="${item.id}"></td>
+                                        <td th:text="${item.productNum}"></td>
+                                        <td th:text="${item.productName}"></td>
+                                        <td th:text="${item.productPrice}"></td>
+                                        <td th:text="${item.cityName}"></td>
+                                        <td th:text="${item.departureTimeStr}"></td>
+                                        <td th:text="${item.productDesc}"></td>
+                                        <td th:text="${item.productStatusStr}"></td>
+                                        <td>详情  删除</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </section>
+                    <!-- /.card -->
+        <!--products list end-->
+    </div>
+</div>
+<!--Wrapper end-->
+<div th:replace="~{public/footer :: footer}" ></div>
+</body>
+</html>
