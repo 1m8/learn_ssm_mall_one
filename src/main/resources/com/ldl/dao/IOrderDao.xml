@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 写 dao 的全限定类名-->
+<mapper namespace="com.ldl.dao.IOrderDao">
+    <resultMap id="orderResult" type="com.ldl.domain.Order">
+        <id column="order_id" property="id" />
+        <result column="order_num" property="orderNum" />
+        <result column="product_id" property="productId" />
+        <result column="create_time" property="createTime" />
+        <result column="order_status" property="orderStatus" />
+        <result column="order_price" property="orderPrice" />
+        <result column="pay_time" property="payTime" />
+        <association property="user" javaType="com.ldl.domain.User">
+            <id column="user_id" property="id" />
+            <result column="user_name" property="userName" />
+            <result column="nickname" property="nickname" />
+        </association>
+        <association property="product" javaType="com.ldl.domain.Product">
+            <id column="product_id" property="id" />
+            <result column="product_num" property="productNum" />
+            <result column="product_name" property="productName" />
+            <result column="city_name" property="cityName" />
+            <result column="departure_time" property="departureTime" />
+            <result column="product_price" property="productPrice" />
+            <result column="product_desc" property="productDesc" />
+            <result column="product_status" property="productStatus" />
+        </association>
+        <collection property="travellers"  ofType="com.ldl.domain.Traveller">
+            <id column="traveller_id" property="id" />
+            <result column="traveller_name" property="name" />
+            <result column="traveller_mobile" property="mobile" />
+        </collection>
+    </resultMap>
+    <!--查询所有-->
+    <!--id是方法名称 与dao接口一致 -->
+    <select id="findAll" resultMap="orderResult">
+      select
+        o.id as order_id,o.order_num,o.product_id,o.order_price,
+        o.create_time,o.order_status,o.pay_time,u.id as user_id,
+        u.user_name,u.nickname,
+        p.id as product_id,p.product_num,p.product_name,p.city_name,
+        p.departure_time,p.product_price,p.product_desc,p.product_status
+      from `order` as o
+      left join `user` as u on u.id = o.user_id
+      left join `product` as p on p.id = o.product_id
+    </select>
+
+    <!--通过ID获取详情-->
+    <select id="findById" resultMap="orderResult" parameterType="int">
+      select
+        o.id as order_id,o.order_num,o.product_id,o.order_price,
+        o.create_time,o.order_status,o.pay_time,u.id as user_id,
+        u.user_name,u.nickname,
+        p.id as product_id,p.product_num,p.product_name,p.city_name,
+        p.departure_time,p.product_price,p.product_desc,p.product_status,
+        t.id as traveller_id,t.name as traveller_name,t.mobile as traveller_mobile
+      from `order` as o
+      left join `user` as u on u.id = o.user_id
+      left join `product` as p on p.id = o.product_id
+      inner join `traveller` as t on t.order_id = o.id
+      where o.id = #{id}
+    </select>
+
+</mapper>

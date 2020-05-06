@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -43,6 +44,12 @@ public class ProductController {
         return "redirect:findAll.do";
     }
 
+    //产品删除
+    @RequestMapping(path="delete.do")
+    public String delete(@RequestParam(name = "id", required = true) int id){
+        productService.deleteById(id);
+        return "redirect:findAll.do";
+    }
 
 
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{public/header :: header}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!--Wrapper begin-->
+<div class="wrapper">
+    <nav th:replace="~{public/nav :: nav}" ></nav>
+    <aside th:replace="~{public/aside :: aside}"></aside>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">订单管理</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">首页</a></li>
+                            <li class="breadcrumb-item active">订单详情</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="col-md-12">
+                <!-- general form elements disabled -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">订单详情</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form role="form" action="" method="post">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div>订单信息</div>
+                                    <table>
+                                        <tr><td>订单号：</td><td th:text="${order.orderNum}"></td></tr>
+                                        <tr><td>订单状态：</td><td th:text="${order.orderStatusStr}"></td></tr>
+                                        <tr><td>支付时间：</td><td th:text="${order.payTime}"></td></tr>
+                                    </table>
+                                </div>
+                                <hr/>
+                                <div class="col-sm-12">
+                                    <div>产品信息</div>
+                                    <table>
+                                        <tr><td>产品编码：</td><td th:text="${order.product.productNum}"></td></tr>
+                                        <tr><td>产品名称：</td><td th:text="${order.product.productName}"></td></tr>
+                                        <tr><td>出发城市：</td><td th:text="${order.product.cityName}"></td></tr>
+                                        <tr><td>出发时间：</td><td th:text="${order.product.departureTimeStr}"></td></tr>
+                                        <tr><td>产品价格：</td><td th:text="${order.product.productPrice}"></td></tr>
+                                    </table>
+                                </div>
+                                <hr/>
+                                <div class="col-sm-12">
+                                    <div>出行人</div>
+                                    <table>
+                                        <tr th:each="traveller : ${order.travellers}" >
+                                            <td th:text="${traveller.name}"></td>
+                                            <td th:text="${traveller.mobile}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<!--Wrapper end-->
+<div th:replace="~{public/footer :: footer}" ></div>
+</body>
+</html>

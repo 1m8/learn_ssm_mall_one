@@ -14,12 +14,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">产品管理</h1>
+                        <h1 class="m-0 text-dark">订单管理</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">首页</a></li>
-                            <li class="breadcrumb-item active">产品列表</li>
+                            <li class="breadcrumb-item active">订单列表</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -37,38 +37,34 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="btn-group" style="margin-bottom:10px;">
-                                <a href="/product/add.do"><button type="button" class="btn btn-default">新增</button></a>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">开启</button>
-                                <button type="button" class="btn btn-default">关闭</button>
-                            </div>
-
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>产品ID</th>
-                                        <th>产品编码</th>
+                                        <th>订单ID</th>
+                                        <th>订单编码</th>
                                         <th>产品名称</th>
                                         <th>产品价格</th>
-                                        <th>出发地</th>
-                                        <th>出发时间</th>
-                                        <th>产品描述</th>
-                                        <th>产品状态</th>
+                                        <th>订单价格</th>
+                                        <th>订单时间</th>
+                                        <th>支付状态</th>
+                                        <th>下单人</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="item : ${products}">
+                                    <tr th:each="item : ${orders}">
                                         <td th:text="${item.id}"></td>
-                                        <td th:text="${item.productNum}"></td>
-                                        <td th:text="${item.productName}"></td>
-                                        <td th:text="${item.productPrice}"></td>
-                                        <td th:text="${item.cityName}"></td>
-                                        <td th:text="${item.departureTimeStr}"></td>
-                                        <td th:text="${item.productDesc}"></td>
-                                        <td th:text="${item.productStatusStr}"></td>
-                                        <td><a th:href="@{/product/delete.do(id=${item.id})}"><button type="button" class="btn btn-block bg-gradient-danger btn-sm">删除</button></a></td>
+                                        <td th:text="${item.orderNum}"></td>
+                                        <td th:text="${item.product.productName}"></td>
+                                        <td th:text="${item.product.productPrice}"></td>
+                                        <td th:text="${item.orderPrice}"></td>
+                                        <td th:text="${item.createTime}"></td>
+                                        <td th:text="${item.orderStatusStr}"></td>
+                                        <td th:text="${item.user.nickname}"></td>
+                                        <td>
+                                            <a th:href="@{/order/delete.do(id=${item.id})}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                                            <a th:href="@{/order/detail.do(id=${item.id})}"><button type="button" class="btn btn-primary btn-xs">详情</button></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

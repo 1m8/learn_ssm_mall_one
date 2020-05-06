@@ -22,4 +22,10 @@ public class ProductService {
     public void save(Product product){
         productDao.save(product);
     }
+
+    public void deleteById(int id){
+        productDao.deleteById(id);
+    }
+
+
 }

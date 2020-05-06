@@ -11,4 +11,6 @@ public interface IProductDao {
     List<Product> findAll();
 
     void save(Product product);
+
+    void deleteById(int product_id);
 }

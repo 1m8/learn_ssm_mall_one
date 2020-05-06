@@ -17,4 +17,9 @@
           product(product_num, product_name, city_name, departure_time, product_price, product_desc, product_status)
         values(#{productNum}, #{productName}, #{cityName}, #{departureTime}, #{productPrice}, #{productDesc}, #{productStatus})
     </insert>
+
+    <!--根据ID删除-->
+    <delete id="deleteById" parameterType="int">
+        delete from product where id = #{id}
+    </delete>
 </mapper>
